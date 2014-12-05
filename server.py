@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 def index():
     """Show homepage with number-of-visits count."""
 
-    num = flask_session["num_visits"] = flask_session.get("num_visits", 0) + 1
+    num = flask_session["visits"] = flask_session.get("visits", 0) + 1
     return render_template("index.html", num=num)
 
 
@@ -41,17 +41,14 @@ def add_melon():
 
     return redirect("/melons")
 
-@app.route("/error")
-def error():
-    raise Exception()
-
 
 if __name__ == '__main__':
     # Connect our application to our database
     db.init_app(app)
 
-    # Create the tables we need from our models (if they already exist, nothing
-    # will happen here, so it's fine to do this each time on startup)
+    # Create the tables we need from our models (if they already
+    # exist, nothing will happen here, so it's fine to do this each
+    # time on startup)
     db.create_all(app=app)
 
     app.run(debug=True)
