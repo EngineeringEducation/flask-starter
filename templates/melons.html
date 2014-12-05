@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>Melons</title>
+</head>
+<body>
+
+<h1>Melons</h1>
+
+<ul>
+    {% for melon in melons %}
+        <li><a href="{{ melon.id }}">{{ melon.name }}</a></li>
+    {% endfor %}
+</ul>
+
+<form action="add-melon" method="post">
+    <h2>Add Melon</h2>
+    <input name="name">
+    <input type="submit">
+</form>
+
+</body>
+</html>
